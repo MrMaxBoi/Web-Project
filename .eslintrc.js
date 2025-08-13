@@ -1,0 +1,25 @@
+module.exports = {
+  env: {
+    node: true,
+    es2021: true
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  },
+  plugins: ['@typescript-eslint'],
+    rules: {
+    semi: ['error', 'always'],
+    quotes: ['error', 'single'],
+    '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' } // ignore args like _next
+    ]
+    },
+  ignorePatterns: ['dist/', 'node_modules/']
+};

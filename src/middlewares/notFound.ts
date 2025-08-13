@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-const notFound = (req: Request, res: Response, next: NextFunction) => {
+const notFound = (req: Request, res: Response, _next: NextFunction) => {
   return res.status(404).json({ message: 'Route not found' });
 };
 

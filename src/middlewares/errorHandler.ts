@@ -4,7 +4,7 @@ const errorHandler = (
   err: Error,
   req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction // renamed to avoid ESLint error
 ) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Internal server error' });
