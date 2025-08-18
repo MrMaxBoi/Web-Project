@@ -19,7 +19,14 @@ export const createUser = async (req: Request, res: Response) => {
     const { name, email } = req.body;
     const user = await User.create({ name, email });
     res.status(201).json({ success: true, data: user });
-  } catch (error) {
+  } catch (error: any) {
+    if (error.code === 11000) {
+      // Mongo duplicate key error (unique email)
+      return res.status(409).json({
+        success: false,
+        message: 'Email already exists',
+      });
+    }
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
